@@ -16,13 +16,13 @@ export default class MissPacMan extends Phaser.Physics.Matter.Sprite {
       right: Phaser.Input.Keyboard.KeyCodes.D,
     });
 
-    var defaultCategory = 0x0001;
-    var redCategory = 0x0002;
-    var greenCategory = 0x0004;
-    var blueCategory = 0x0008;
+    const defaultCategory = 0x0001;
+    const redCategory = 0x0002;
+    const greenCategory = 0x0004;
+    const blueCategory = 0x0008;
 
     const { Body, Bodies } = Phaser.Physics.Matter.Matter;
-    var playerCollider = Bodies.circle(this.x, this.y, 6, {
+    const playerCollider = Bodies.circle(this.x, this.y, 6, {
       isSensor: false,
       label: "playerCollider",
     });
@@ -78,7 +78,10 @@ export default class MissPacMan extends Phaser.Physics.Matter.Sprite {
   update(scene) {
     console.log("update MissPacMan", this.score);
     //console.log("MissPacMan Location>>>", "x:", this.x, " y:", this.y);
-
+    if (this.score >= 584) {
+      window.location.reload();
+      alert("Somebody won!");
+    }
     if (this.x < 2) this.x = 470;
     if (this.x > 486) this.x = 10;
 
@@ -87,14 +90,14 @@ export default class MissPacMan extends Phaser.Physics.Matter.Sprite {
     const speed = 2.5;
     let playerVelocity = new Phaser.Math.Vector2();
     if (this.inputKeys.left.isDown) {
-      playerVelocity.x = -1;
+      playerVelocity.x = -100;
     } else if (this.inputKeys.right.isDown) {
-      playerVelocity.x = 1;
+      playerVelocity.x = 100;
     }
     if (this.inputKeys.up.isDown) {
-      playerVelocity.y = -1;
+      playerVelocity.y = -100;
     } else if (this.inputKeys.down.isDown) {
-      playerVelocity.y = 1;
+      playerVelocity.y = 100;
     }
 
     playerVelocity.normalize();

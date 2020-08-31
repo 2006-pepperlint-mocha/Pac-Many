@@ -12,7 +12,7 @@ export function baseLevelPreload(scene) {
     "/assets/maps/pacman/res1_atlas.json"
   );
   // loading audio
-  scene.load.audio("pickup", "/assets/audio/pickup.mp3");
+  scene.load.audio("pickup", "/assets/audio/waka.mp3");
 }
 
 export function baseLevelCreate(scene) {
@@ -36,7 +36,7 @@ export function addLevelResources(scene) {
 
   const resources = scene.map.getObjectLayer("Object Layer 1");
   resources.objects.forEach((resource) => {
-    //console.log("resource type>>", resource);
+    // console.log("resource type>>", resource);
     let resItem = new Phaser.Physics.Matter.Sprite(
       scene.matter.world,
       resource.x,
